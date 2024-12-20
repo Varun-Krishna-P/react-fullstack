@@ -8,7 +8,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "mongodb": "^6.12.0"
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
