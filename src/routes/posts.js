@@ -4,6 +4,9 @@ import {
   listPostsByAuthor,
   listPostsByTag,
   getPostById,
+  createPost,
+  updatePost,
+  deletePost,
 } from '../services/posts.js'
 
 export function postsRoutes(app) {
@@ -24,6 +27,37 @@ export function postsRoutes(app) {
       }
     } catch (err) {
       console.error(`error listing posts: ${err}`)
+      return res.status(500).end()
+    }
+  })
+
+  app.post(API_V1_ROUTE + 'posts', async (req, res) => {
+    try {
+      const post = await createPost(req.body)
+      return res.json(post)
+    } catch (err) {
+      console.error(`error while creating post: ${err}`)
+      return res.status(500).end()
+    }
+  })
+
+  app.patch(`${API_V1_ROUTE}posts/:id`, async (req, res) => {
+    try {
+      const post = await updatePost(req.params.id, req.body)
+      return res.json(post)
+    } catch (err) {
+      console.error(`error while updating post: ${err}`)
+      return res.status(500).end()
+    }
+  })
+
+  app.delete(`${API_V1_ROUTE}posts/:id`, async (req, res) => {
+    try {
+      const { deletedCount } = await deletePost(req.params.id)
+      if (deletedCount === 0) return res.sendStatus(404)
+      return res.status(204).end()
+    } catch (err) {
+      console.error(`error while deleting post: ${err}`)
       return res.status(500).end()
     }
   })
