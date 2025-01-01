@@ -20,6 +20,6 @@ export function PostSorting({ fields = [] }) {
   )
 }
 
-PostSorting.PropTypes = {
+PostSorting.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

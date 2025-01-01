@@ -8,6 +8,6 @@ export function PostFilter({ field }) {
   )
 }
 
-PostFilter.PropTypes = {
+PostFilter.propTypes = {
   field: PropTypes.string.isRequired,
 }

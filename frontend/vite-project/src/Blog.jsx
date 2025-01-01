@@ -1,17 +1,16 @@
 import { CreatePost } from './components/CreatePost'
-import { Post } from './components/Post'
 import { PostFilter } from './components/PostFilter'
 import { PostList } from './components/PostList'
 import { PostSorting } from './components/PostSorting'
-const posts = [
-  {
-    title: 'Full-Stack React Projects',
-    contents: "Let's become a full-stack developer!",
-    author: 'Daniel Bug1',
-  },
-  { title: 'Hello React!' },
-]
+import { useQuery } from '@tanstack/react-query'
+import { getPosts } from './api/posts.jsx'
+
 export function Blog() {
+  const postsQuery = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => getPosts(),
+  })
+  const posts = postsQuery.data ?? []
   return (
     <div style={{ padding: 8 }}>
       <CreatePost />

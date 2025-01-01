@@ -14,6 +14,6 @@ export function PostList({ posts = [] }) {
   )
 }
 
-PostList.PropTypes = {
+PostList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape(Post.PropTypes)).isRequired,
 }
