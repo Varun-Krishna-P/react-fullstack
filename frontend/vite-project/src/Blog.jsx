@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getPosts } from './api/posts.jsx'
 import { useState } from 'react'
 
+// book repo: https://github.com/PacktPublishing/Modern-Full-Stack-React-Projects
 export function Blog() {
   const [author, setAuthor] = useState('')
   const [sortBy, setSortBy] = useState('createdAt')
